@@ -6,7 +6,8 @@ import joblib
 from sklearn.impute import SimpleImputer
 
 # Load the saved SVR model pipeline
-model = joblib.load("svr_house_price_pipeline.joblib")
+model = joblib.load("svr_house_price_model.joblib")
+
 
 st.title("Bengaluru House Price Prediction")
 st.markdown("Predict the house price using area, number of bathrooms, and BHK (bedrooms).")
