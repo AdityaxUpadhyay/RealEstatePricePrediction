@@ -5,19 +5,18 @@ import numpy as np
 import joblib
 from sklearn.impute import SimpleImputer
 
-# Load the saved SVR model pipeline
-import urllib.request
-import joblib
+import gdown
 
-# Download the model from Google Drive
-model_url = "https://drive.google.com/uc?export=download&id=1GWVwipNkjl3cF2cvOqiDxBh2dzz0TMoj"
-model_path = "svr_house_price_model.joblib"
+# Google Drive file ID
+file_id = "1GWVwipNkjl3cF2cvOqiDxBh2dzz0TMoj"
+output = "svr_house_price_model.joblib"
 
-# Download once if not already present
-urllib.request.urlretrieve(model_url, model_path)
+# Download using gdown
+gdown.download(f"https://drive.google.com/uc?id={file_id}", output, quiet=False)
 
 # Load the model
-model = joblib.load(model_path)
+model = joblib.load(output)
+
 
 st.title("Bengaluru House Price Prediction")
 st.markdown("Predict the house price using area, number of bathrooms, and BHK (bedrooms).")
