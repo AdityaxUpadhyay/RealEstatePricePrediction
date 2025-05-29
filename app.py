@@ -6,8 +6,18 @@ import joblib
 from sklearn.impute import SimpleImputer
 
 # Load the saved SVR model pipeline
-model = joblib.load("svr_house_price_model.joblib")
+import urllib.request
+import joblib
 
+# Download the model from Google Drive
+model_url = "https://drive.google.com/uc?export=download&id=1GWVwipNkjl3cF2cvOqiDxBh2dzz0TMoj"
+model_path = "svr_house_price_model.joblib"
+
+# Download once if not already present
+urllib.request.urlretrieve(model_url, model_path)
+
+# Load the model
+model = joblib.load(model_path)
 
 st.title("Bengaluru House Price Prediction")
 st.markdown("Predict the house price using area, number of bathrooms, and BHK (bedrooms).")
